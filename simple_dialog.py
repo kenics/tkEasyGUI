@@ -1,4 +1,5 @@
 import TkEasyGUI as eg
+import pdb;
 
 # Size(width=1920, height=1080)
 
@@ -14,7 +15,9 @@ layout = [
 win_location = (100, 0)
 # eg.eg.set_location(xy=(10,10))
 # window = eg.Window("Title", layout=layout,size=(200,100),resizable=False)
-window = eg.Window("Title", layout=layout,location=win_location)
+breakpoint();
+window = eg.Window("Title", layout=layout,size=(200,100),location=win_location)
+breakpoint();
 # window.move(10,10)
 # xPos = 1000 # X座標
 # yPos = 700  # Y座標
