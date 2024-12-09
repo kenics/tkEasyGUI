@@ -11,8 +11,10 @@ layout = [
 #    [eg.location(100,300)]
 ]
 #location=(0,0)
+win_location = (100, 0)
 # eg.eg.set_location(xy=(10,10))
-window = eg.Window("Title", layout=layout,size=(200,100),resizable=False)
+# window = eg.Window("Title", layout=layout,size=(200,100),resizable=False)
+window = eg.Window("Title", layout=layout,location=win_location)
 # window.move(10,10)
 # xPos = 1000 # X座標
 # yPos = 700  # Y座標
