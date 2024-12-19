@@ -1,7 +1,9 @@
 """
-### Many Buttons example
+### Many Buttons example arrangement
 
 This example demonstrates how to create a window with many buttons.
+Press the buttons in the order of the numbers displayed.
+表示された数字の順にボタンを押す
 """
 
 import TkEasyGUI as eg
@@ -15,8 +17,12 @@ for i in range(1, 11):
 #1適当な順番に並べる
 random.shuffle(numbers)
 
-// 文字列に変換したリストの先頭から3文字を抽出
-numbers_str = ",".join([str(n) for n in numbers][0:3])
+max_num = 3
+
+# 文字列に変換したリストの先頭から3文字を抽出
+numbers_q = numbers[0:max_num]
+#表示用にカンマ区切りの文字列にしている
+numbers_str = ",".join([str(n) for n in numbers_q])
 
 
 # define layout --- make 12 buttons
@@ -38,6 +44,8 @@ layout.append([eg.Button("Close")])
 # make window
 window = eg.Window("Many buttons", layout)
 
+line_num = 0
+
 # event loop
 for event, values in window.event_iter():
     # close button
@@ -45,10 +53,15 @@ for event, values in window.event_iter():
         break
     # push number button
     if event.startswith("-button"):
-        # get number from metadata
-        # no = window[event].metadata["no"]
-        # eg.popup(f"You Pushed {no}")
-        # disable button
-        window[event].update(disabled=True)
-
+        no = window[event].metadata["no"]
+        try:
+                index_num = numbers_q.index(no)
+        except ValueError:
+                index_num = -1
+        if index_num == line_num:
+                line_num += 1
+                window[event].update(disabled=True)
+        if max_num == line_num:
+                eg.popup("Goal !!")
+                break;
 window.close()
