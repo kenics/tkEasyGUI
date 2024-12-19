@@ -1,6 +1,7 @@
 import datetime
 from time import sleep
-import PySimpleGUI as sg
+# import PySimpleGUI as sg
+import TkEasyGUI as sg
 
 def count_down() -> str:
     """来年までの秒数を文字列で返す関数"""
